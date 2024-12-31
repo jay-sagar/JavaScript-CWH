@@ -1,0 +1,29 @@
+// when we try to read a property from a prototype and it's missing
+// Javascript takes it from the prototype. this is called "prototypal inheritance"
+
+
+let a = {
+    name: "Jay",
+    language: "Javascript",
+    run: () => {
+        console.log("Self run")
+    }
+}
+
+console.log(a)
+
+let p = {
+    run: () => {
+        console.log("run")
+    }
+}
+a.__proto__ = p
+a.run()
+
+// what happened here is a.run() tries to run from it's own object but couldn't find it
+// so we use __proto__ to add the object to a and now a can read a.run() from p
+
+p.__proto__= {
+    newName : "Jackie"
+}
+console.log(a.newName)
